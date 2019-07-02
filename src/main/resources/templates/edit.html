@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Edit Task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+	<link href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+	<body>
+		<div class="container">
+		
+		<h1>Edit Task</h1>
+ 		
+ 		<form action="#" th:action="@{'/task_posts/edit/{id}' (id=${posts.id})}" th:object="${posts}" th:method="put">
+		
+			<div th:fragment="form"> 		
+				<div class="form-group">
+					<input type="text" class="form-control" th:placeholder="${posts.taskTitle}" th:field="*{taskTitle}" />
+				</div>
+				
+				<div class="form-group">
+					<input type="text" class="form-control" th:placeholder="${posts.taskOwner}" th:field="*{taskOwner}" />
+				</div>
+				
+				<div class="form-group">
+					<input type="text" class ="form-control" th:placeholder="${posts.taskDetail}" th:field="*{taskDetail}" />
+			</div>
+	
+				<button class="btn btn-primary">Update Your Task</button>
+			</div>
+
+
+			
+		</form>
+	</div>
+	
+	<script src="../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>

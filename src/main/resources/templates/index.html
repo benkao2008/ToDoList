@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ben's To Do List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/custom.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+		<h1>Welcome to Ben's ToDo List App!</h1>
+		<!-- <h3>Have a task ready? Click here!</h3> -->
+		<br>
+			<a th:href="@{/task_posts/new}"><button class= "btn btn-primary center-block">Have A Task? Click Here!</button></a>
+		</div>
+		
+		<div class="row">
+		<div th:each="taskList:${tasks}">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 th:text="${taskList.taskTitle}"></h2>
+				</div>
+				<div class="panel-body">
+					<strong><p th:text="${taskList.taskOwner}"/></strong>
+					<p th:text="${taskList.taskDetail}" />
+				</div>
+				<div class="panel-footer">
+					<!-- Link to Update -->
+					<form action="#" th:action="@{'/task_posts/edit/{id}'(id=${taskList.id})}" th:method="get"
+                      class="form-horizontal">
+					        <div class="form-group">
+					            <input type="hidden" name="_method" value="get"/>
+					        <button type="submit" class="btn btn-success" th:text="Edit">Edit</button>
+					    </div>
+					</form>
+					<!-- Link to Show  -->
+					<!--  Link to Destroy -->
+					<form action="#" th:action="@{'/task_posts/{id}'(id=${taskList.id})}" th:method="delete"
+                      class="form-horizontal">
+					        <div class="form-group">
+					            <input type="hidden" name="_method" value="delete"/>
+					        <button type="submit" class="btn btn-danger" th:text="Delete">Delete</button>
+					    </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+
+
+
+
+
+
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
